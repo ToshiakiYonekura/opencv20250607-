@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Computer Vision Examples Gallery</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+.image-card { background: white; border-radius: 8px; padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.image-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #333; }
+.image-desc { color: #666; margin-bottom: 15px; }
+.image-placeholder { width: 100%; height: 200px; background: #e0e0e0; border-radius: 4px; }
+.image-placeholder { display: flex; align-items: center; justify-content: center; color: #888; }
+.stats { background: #f8f9fa; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px; }
+h1 { color: #2c3e50; text-align: center; }
+.header { text-align: center; margin-bottom: 30px; }
+.note { background: #e8f4fd; border: 1px solid #bee5eb; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<div class='header'>
+<h1>🎨 Computer Vision Examples Gallery</h1>
+<p>Visual demonstrations of computer vision algorithms and real-world applications</p>
+</div>
+<div class='note'>
+<strong>Note:</strong> Images are in PPM format. To view them properly:
+<ul>
+<li>Convert to PNG: <code>convert file.ppm file.png</code> (requires ImageMagick)</li>
+<li>Use online converter: photopea.com or convertio.co</li>
+<li>View with GIMP, IrfanView, or modern browsers</li>
+</ul>
+</div>
+<div class='gallery'>
+<div class='image-card'>
+<div class='image-title'>🏠 Object Detection Demo</div>
+<div class='image-desc'>Scene with house, tree, and sun. Green boxes show detected objects using computer vision algorithms.</div>
+<div class='image-placeholder'>
+object_detection_example.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> object_detection_example.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Scene with house, tree, and sun. Green boxes show detected objects using computer vision algorithms.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>📸 Original Noisy Image</div>
+<div class='image-desc'>Starting image with geometric shapes and added noise, simulating real-world image capture conditions.</div>
+<div class='image-placeholder'>
+01_original_noisy.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> 01_original_noisy.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Starting image with geometric shapes and added noise, simulating real-world image capture conditions.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🔧 Gaussian Blur Applied</div>
+<div class='image-desc'>Noise reduction using Gaussian filter. Notice how the image becomes smoother while preserving major features.</div>
+<div class='image-placeholder'>
+02_gaussian_blur.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> 02_gaussian_blur.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Noise reduction using Gaussian filter. Notice how the image becomes smoother while preserving major features.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🔍 Edge Detection Result</div>
+<div class='image-desc'>Sobel edge detection applied after noise reduction. White areas show detected boundaries and edges.</div>
+<div class='image-placeholder'>
+03_edge_detection.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> 03_edge_detection.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Sobel edge detection applied after noise reduction. White areas show detected boundaries and edges.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🎯 Feature Detection</div>
+<div class='image-desc'>Corner detection (red dots) and blob detection (green dots) on various geometric patterns.</div>
+<div class='image-placeholder'>
+feature_detection_example.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> feature_detection_example.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Corner detection (red dots) and blob detection (green dots) on various geometric patterns.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🎥 Security Camera - Frame 1</div>
+<div class='image-desc'>Empty room surveillance footage. This serves as the background reference for motion detection.</div>
+<div class='image-placeholder'>
+motion_frame1_empty.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> motion_frame1_empty.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Empty room surveillance footage. This serves as the background reference for motion detection.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🎥 Security Camera - Frame 2</div>
+<div class='image-desc'>Same room with person present. Blue figure represents detected human movement.</div>
+<div class='image-placeholder'>
+motion_frame2_person.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> motion_frame2_person.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Same room with person present. Blue figure represents detected human movement.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🚨 Motion Detection Result</div>
+<div class='image-desc'>White pixels indicate areas where motion was detected between the two frames.</div>
+<div class='image-placeholder'>
+motion_difference_map.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> motion_difference_map.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> White pixels indicate areas where motion was detected between the two frames.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🏥 Medical Imaging Analysis</div>
+<div class='image-desc'>Simulated medical scan with anomaly detection. Red circles highlight potential areas of concern.</div>
+<div class='image-placeholder'>
+medical_scan_analysis.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> medical_scan_analysis.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Simulated medical scan with anomaly detection. Red circles highlight potential areas of concern.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>🏭 Quality Control Inspection</div>
+<div class='image-desc'>Circuit board inspection with defect detection. Yellow boxes mark detected manufacturing defects.</div>
+<div class='image-placeholder'>
+manufacturing_qc_example.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> manufacturing_qc_example.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Circuit board inspection with defect detection. Yellow boxes mark detected manufacturing defects.
+</div>
+</div>
+<div class='image-card'>
+<div class='image-title'>📊 Algorithm Comparison</div>
+<div class='image-desc'>Visual overview of different computer vision techniques with performance indicators.</div>
+<div class='image-placeholder'>
+algorithm_comparison_chart.ppm<br>Click to download and view
+</div>
+<div class='stats'>
+<strong>File:</strong> algorithm_comparison_chart.ppm<br>
+<strong>Format:</strong> PPM (Portable Pixmap)<br>
+<strong>Purpose:</strong> Visual overview of different computer vision techniques with performance indicators.
+</div>
+</div>
+</div>
+<div style='margin-top: 40px; text-align: center; color: #666;'>
+<p>Generated by Computer Vision Examples Generator</p>
+<p>These images demonstrate fundamental computer vision concepts used in industry applications.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+COMPUTER VISION EXAMPLES - IMAGE INDEX
+======================================
+
+Location: /home/yonetoshi2088/work/opencv20250606-/opencv20250607-/examples/
+
+1. object_detection_example.ppm
+   → Object detection with green bounding boxes
+
+2. 01_original_noisy.ppm
+   → Original noisy image (processing pipeline step 1)
+
+3. 02_gaussian_blur.ppm
+   → Gaussian blur applied (processing pipeline step 2)
+
+4. 03_edge_detection.ppm
+   → Edge detection result (processing pipeline step 3)
+
+5. feature_detection_example.ppm
+   → Feature detection: red=corners, green=blobs
+
+6. motion_frame1_empty.ppm
+   → Security camera: empty room (motion detection baseline)
+
+7. motion_frame2_person.ppm
+   → Security camera: person detected
+
+8. motion_difference_map.ppm
+   → Motion detection result: white=movement
+
+9. medical_scan_analysis.ppm
+   → Medical scan with anomaly detection (red circles)
+
+10. manufacturing_qc_example.ppm
+   → Quality control: circuit board defect detection
+
+11. algorithm_comparison_chart.ppm
+   → Algorithm comparison chart with performance bars
+
+
+VIEWING OPTIONS:
+================
+1. ASCII Art View: ./image_viewer_environment ascii <filename>
+2. Color Analysis: ./image_viewer_environment color <filename>
+3. Statistics: ./image_viewer_environment analyze <filename>
+4. Feature Detection: ./image_viewer_environment features <filename>
+5. HTML Gallery: ./image_viewer_environment gallery
+6. Convert to PNG: convert <filename.ppm> <filename.png>
+7. Online Viewer: Upload to photopea.com or convertio.co
