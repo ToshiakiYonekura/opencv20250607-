@@ -97,7 +97,7 @@ enum ImwriteFlags {
        IMWRITE_PNG_STRATEGY        = 17, //!< For PNG, One of cv::ImwritePNGFlags, default is IMWRITE_PNG_STRATEGY_RLE.
        IMWRITE_PNG_BILEVEL         = 18, //!< For PNG, Binary level PNG, 0 or 1, default is 0.
        IMWRITE_PNG_FILTER          = 19, //!< For PNG, One of cv::ImwritePNGFilterFlags, default is IMWRITE_PNG_FILTER_SUB.
-       IMWRITE_PNG_ZLIBBUFFER_SIZE = 20, //!< For PNG, sets the size of the internal zlib compression buffer in bytes.
+       IMWRITE_PNG_ZLIBBUFFER_SIZE = 20, //!< For PNG with libpng, sets the size of the internal zlib compression buffer in bytes, from 6 to 1048576(1024 KiB). Default is 8192(8 KiB). For normal use, 131072(128 KiB) or 262144(256 KiB) may be sufficient. If WITH_SPNG=ON, it is not supported.
        IMWRITE_PXM_BINARY          = 32, //!< For PPM, PGM, or PBM, it can be a binary format flag, 0 or 1. Default value is 1.
        IMWRITE_EXR_TYPE            = (3 << 4) + 0 /* 48 */, //!< override EXR storage type (FLOAT (FP32) is default)
        IMWRITE_EXR_COMPRESSION     = (3 << 4) + 1 /* 49 */, //!< override EXR compression type (ZIP_COMPRESSION = 3 is default)
@@ -105,16 +105,16 @@ enum ImwriteFlags {
        IMWRITE_WEBP_QUALITY        = 64, //!< For WEBP, it can be a quality from 1 to 100 (the higher is the better). By default (without any parameter) and for quality above 100 the lossless compression is used.
        IMWRITE_HDR_COMPRESSION     = (5 << 4) + 0 /* 80 */, //!< specify HDR compression
        IMWRITE_PAM_TUPLETYPE       = 128,//!< For PAM, sets the TUPLETYPE field to the corresponding string value that is defined for the format
-       IMWRITE_TIFF_RESUNIT        = 256,//!< For TIFF, use to specify which DPI resolution unit to set; see libtiff documentation for valid values
+       IMWRITE_TIFF_RESUNIT        = 256,//!< For TIFF, use to specify which DPI resolution unit to set. See ImwriteTiffResolutionUnitFlags. Default is IMWRITE_TIFF_RESOLUTION_UNIT_INCH.
        IMWRITE_TIFF_XDPI           = 257,//!< For TIFF, use to specify the X direction DPI
        IMWRITE_TIFF_YDPI           = 258,//!< For TIFF, use to specify the Y direction DPI
        IMWRITE_TIFF_COMPRESSION    = 259,//!< For TIFF, use to specify the image compression scheme. See cv::ImwriteTiffCompressionFlags. Note, for images whose depth is CV_32F, only libtiff's SGILOG compression scheme is used. For other supported depths, the compression scheme can be specified by this flag; LZW compression is the default.
        IMWRITE_TIFF_ROWSPERSTRIP   = 278,//!< For TIFF, use to specify the number of rows per strip.
-       IMWRITE_TIFF_PREDICTOR      = 317,//!< For TIFF, use to specify predictor. See cv::ImwriteTiffPredictorFlags.
+       IMWRITE_TIFF_PREDICTOR      = 317,//!< For TIFF, use to specify predictor. See cv::ImwriteTiffPredictorFlags. Default is IMWRITE_TIFF_PREDICTOR_HORIZONTAL .
        IMWRITE_JPEG2000_COMPRESSION_X1000 = 272,//!< For JPEG2000, use to specify the target compression rate (multiplied by 1000). The value can be from 0 to 1000. Default is 1000.
        IMWRITE_AVIF_QUALITY        = 512,//!< For AVIF, it can be a quality between 0 and 100 (the higher the better). Default is 95.
        IMWRITE_AVIF_DEPTH          = 513,//!< For AVIF, it can be 8, 10 or 12. If >8, it is stored/read as CV_32F. Default is 8.
-       IMWRITE_AVIF_SPEED          = 514,//!< For AVIF, it is between 0 (slowest) and (fastest). Default is 9.
+       IMWRITE_AVIF_SPEED          = 514,//!< For AVIF, it is between 0 (slowest) and 10(fastest). Default is 9.
        IMWRITE_JPEGXL_QUALITY      = 640,//!< For JPEG XL, it can be a quality from 0 to 100 (the higher is the better). Default value is 95. If set, distance parameter is re-calicurated from quality level automatically. This parameter request libjxl v0.10 or later.
        IMWRITE_JPEGXL_EFFORT       = 641,//!< For JPEG XL, encoder effort/speed level without affecting decoding speed; it is between 1 (fastest) and 10 (slowest). Default is 7.
        IMWRITE_JPEGXL_DISTANCE     = 642,//!< For JPEG XL, distance level for lossy compression: target max butteraugli distance, lower = higher quality, 0 = lossless; range: 0 .. 25. Default is 1.
@@ -175,7 +175,12 @@ enum ImwriteTiffPredictorFlags {
         IMWRITE_TIFF_PREDICTOR_NONE = 1,              //!< no prediction scheme used
         IMWRITE_TIFF_PREDICTOR_HORIZONTAL = 2,        //!< horizontal differencing
         IMWRITE_TIFF_PREDICTOR_FLOATINGPOINT = 3      //!< floating point predictor
+};
 
+enum ImwriteTiffResolutionUnitFlags {
+        IMWRITE_TIFF_RESOLUTION_UNIT_NONE = 1,        //!< no absolute unit of measurement.
+        IMWRITE_TIFF_RESOLUTION_UNIT_INCH = 2,        //!< inch
+        IMWRITE_TIFF_RESOLUTION_UNIT_CENTIMETER = 3,  //!< centimeter
 };
 
 enum ImwriteEXRTypeFlags {
